@@ -10,6 +10,8 @@ g = zeros(size(z));
 %               vector or scalar).
 
 
+denom = 1 + e.**(-z);
+g = 1./denom;
 
 
 
