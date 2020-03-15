@@ -25,7 +25,20 @@ sigma = 0.3;
 
 
 
+resultat = [];
+ 
+for c_list = [0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30]
+   for s_list = [0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30]
+    model= svmTrain(X, y, c_list, @(x1, x2) gaussianKernel(x1, x2, s_list));
+	  prediction = svmPredict(model, Xval);
+	  predictionErreur = mean(double(prediction ~= yval));
+	  resultat = [resultat; c_list, s_list, predictionErreur];
+   end
+end
 
+[minError, minIndex] = min(resultat(:, 3));
+C = resultat(minIndex, 1);
+sigma = resultat(minIndex, 2);
 
 
 
