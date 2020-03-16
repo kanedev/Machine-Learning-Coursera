@@ -23,7 +23,12 @@ idx = zeros(size(X,1), 1);
 
 
 
+m = size(X, 1);
 
+for i = 1:m
+  [v, k] = min(sum((centroids - X(i,:)).**2, 2));
+  idx(i) = k;
+end
 
 
 
