@@ -23,7 +23,9 @@ sigma2 = zeros(n, 1);
 
 
 
-
+mu = (1/m) * sum(X);
+mu_expand = repmat(mu,m,1);
+sigma2 = (1/m) * sum( (X-mu_expand).^2 );
 
 
 
